@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفاصيل الوظيفة - وظفني</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" async></script>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="https://img.icons8.com/color/48/000000/egypt.png" alt="علم مصر" class="flag-icon">
+                <h1 data-i18n="title">وظفني</h1>
+            </div>
+            <nav>
+                <a href="index.html" class="nav-link"><i class="fas fa-home"></i> <span data-i18n="home">الرئيسية</span></a>
+                <a href="about.html" class="nav-link"><i class="fas fa-info-circle"></i> <span data-i18n="about">حول الموقع</span></a>
+                <a href="contact.html" class="nav-link"><i class="fas fa-envelope"></i> <span data-i18n="contact">اتصل بنا</span></a>
+                <a href="upload-cv.html" class="nav-link"><i class="fas fa-file-upload"></i> <span data-i18n="uploadCV">رفع السيرة الذاتية</span></a>
+                <a href="login.html" class="nav-link"><i class="fas fa-sign-in-alt"></i> <span data-i18n="login">تسجيل الدخول</span></a>
+                <a href="company-dashboard.html" class="nav-link"><i class="fas fa-briefcase"></i> <span data-i18n="forCompanies">للشركات</span></a>
+                <button id="themeToggle" class="theme-toggle"><i class="fas fa-sun"></i></button>
+                <select id="languageSelect">
+                    <option value="ar">العربية</option>
+                    <option value="en">English</option>
+                </select>
+            </nav>
+        </div>
+    </header>
+
+    <section class="job-details">
+        <div class="container">
+            <div class="job-details-header">
+                <img src="" alt="Job Icon" class="job-icon" id="jobIcon">
+                <div>
+                    <h2 id="jobTitle"></h2>
+                    <p id="jobCompany"></p>
+                </div>
+            </div>
+            <div class="job-details-content">
+                <p><i class="fas fa-map-marker-alt"></i> <strong data-i18n="location">الموقع:</strong> <span id="jobLocation"></span></p>
+                <p><i class="fas fa-briefcase"></i> <strong data-i18n="experience">الخبرة:</strong> <span id="jobExperience"></span></p>
+                <p><i class="fas fa-info-circle"></i> <strong data-i18n="description">الوصف:</strong> <span id="jobDescription"></span></p>
+                <p><i class="fas fa-money-bill-wave"></i> <strong data-i18n="salary">الراتب:</strong> <span id="jobSalary"></span></p>
+                <p><i class="fas fa-calendar-alt"></i> <strong data-i18n="posted">تاريخ النشر:</strong> <span id="jobPosted"></span></p>
+            </div>
+            <div class="job-actions">
+                <button class="favorite-btn" id="favoriteBtn"><i class="fas fa-heart"></i> <span data-i18n="addToFavorites">إضافة إلى المفضلة</span></button>
+                <button class="apply-btn" data-i18n="applyNow"><i class="fas fa-paper-plane"></i> تقدم الآن</button>
+                <button class="contact-btn" onclick="showContactForm()" data-i18n="contactCompany"><i class="fas fa-envelope"></i> تواصل مع الشركة</button>
+            </div>
+            <div class="contact-form-container" id="contactFormContainer" style="display: none;">
+                <h3 data-i18n="contactCompany">تواصل مع الشركة</h3>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name" data-i18n="name">الاسم</label>
+                        <input type="text" id="name" placeholder="أدخل اسمك" required data-i18n-placeholder="namePlaceholder">
+                    </div>
+                    <div class="form-group">
+                        <label for="email" data-i18n="email">البريد الإلكتروني</label>
+                        <input type="email" id="email" placeholder="أدخل بريدك الإلكتروني" required data-i18n-placeholder="emailPlaceholder">
+                    </div>
+                    <div class="form-group">
+                        <label for="message" data-i18n="message">الرسالة</label>
+                        <textarea id="message" placeholder="اكتب رسالتك هنا..." required data-i18n-placeholder="messagePlaceholder"></textarea>
+                    </div>
+                    <button type="submit" data-i18n="sendMessage"><i class="fas fa-paper-plane"></i> إرسال الرسالة</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 data-i18n="title">وظفني</h3>
+                    <p data-i18n="footerAbout">منصة توظيف مصرية تساعدك في العثور على وظيفة أحلامك في مصر.</p>
+                </div>
+                <div class="footer-section">
+                    <h3 data-i18n="quickLinks">روابط سريعة</h3>
+                    <a href="index.html" data-i18n="home">الرئيسية</a>
+                    <a href="about.html" data-i18n="about">حول الموقع</a>
+                    <a href="contact.html" data-i18n="contact">اتصل بنا</a>
+                    <a href="upload-cv.html" data-i18n="uploadCV">رفع السيرة الذاتية</a>
+                </div>
+                <div class="footer-section">
+                    <h3 data-i18n="contactUs">تواصلوا معنا</h3>
+                    <p><i class="fas fa-envelope"></i> support@wazafny.com</p>
+                    <p><i class="fas fa-phone"></i> +201027034698</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <p class="footer-bottom" data-i18n="footerBottom">© 2025 وظفني. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <script src="script.js"></script>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const jobId = urlParams.get('id');
+        const job = jobsData.find(job => job.id === jobId);
+
+        if (job) {
+            document.getElementById('jobTitle').textContent = job.title;
+            document.getElementById('jobCompany').textContent = job.company;
+            document.getElementById('jobLocation').textContent = job.location;
+            document.getElementById('jobExperience').textContent = job.experience;
+            document.getElementById('jobDescription').textContent = job.description;
+            document.getElementById('jobSalary').textContent = job.salary;
+            document.getElementById('jobPosted').textContent = job.posted;
+            document.getElementById('jobIcon').src = job.icon;
+
+            const favoriteBtn = document.getElementById('favoriteBtn');
+            favoriteBtn.setAttribute('data-id', job.id);
+            favoriteBtn.setAttribute('data-title', job.title);
+            favoriteBtn.setAttribute('data-description', job.description);
+            favoriteBtn.setAttribute('data-location', job.location);
+            favoriteBtn.setAttribute('data-category', job.category);
+            favoriteBtn.setAttribute('data-icon', job.icon);
+
+            if (favorites.some(fav => fav.id === job.id)) {
+                favoriteBtn.classList.add('added');
+                favoriteBtn.querySelector('span').textContent = translations[currentLang].removeFromFavorites;
+            }
+        }
+
+        document.querySelector('.apply-btn').addEventListener('click', () => {
+            showToast(translations[currentLang].appliedSuccessfully || 'تم التقديم بنجاح!');
+        });
+
+        function showContactForm() {
+            const formContainer = document.getElementById('contactFormContainer');
+            formContainer.style.display = formContainer.style.display === 'none' ? 'block' : 'none';
+        }
+
+        document.querySelector('.contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            showToast(translations[currentLang].messageSentSuccessfully || 'تم إرسال الرسالة بنجاح!');
+            document.getElementById('contactFormContainer').style.display = 'none';
+        });
+
+        gsap.from('.job-details', {
+            opacity: 0,
+            y: 50,
+            duration: 1,
+            ease: 'power2.out',
+        });
+    </script>
+</body>
+</html>

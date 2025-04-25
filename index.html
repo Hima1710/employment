@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>وظفني - وظائف مصر</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" async></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" async></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="https://img.icons8.com/color/48/000000/egypt.png" alt="علم مصر" class="flag-icon">
+                <h1 data-i18n="title">وظفني</h1>
+            </div>
+            <nav>
+                <a href="index.html" class="nav-link"><i class="fas fa-home"></i> <span data-i18n="home">الرئيسية</span></a>
+                <a href="#" class="nav-link ask-for-me-btn"><i class="fas fa-robot"></i> <span data-i18n="askForMe">أسال ليا</span></a>
+                <select id="languageSelect">
+                    <option value="ar">العربية</option>
+                    <option value="en">English</option>
+                </select>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h2 data-i18n="findJob">ابحث عن وظيفتك المثالية في مصر</h2>
+            <div class="search-box">
+                <div class="search-input-wrapper">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="jobSearch" placeholder="ابحث عن وظيفة..." data-i18n-placeholder="searchPlaceholder">
+                </div>
+                <select id="locationFilter">
+                    <option value="" data-i18n="allLocations">جميع المواقع</option>
+                    <option value="القاهرة">القاهرة</option>
+                    <option value="الإسكندرية">الإسكندرية</option>
+                    <option value="الجيزة">الجيزة</option>
+                    <option value="أسيوط">أسيوط</option>
+                    <option value="المنصورة">المنصورة</option>
+                    <option value="شرم الشيخ">شرم الشيخ</option>
+                    <option value="الغردقة">الغردقة</option>
+                    <option value="الفيوم">الفيوم</option>
+                    <option value="طنطا">طنطا</option>
+                    <option value="الزقازيق">الزقازيق</option>
+                </select>
+                <select id="categoryFilter">
+                    <option value="" data-i18n="allCategories">جميع المجالات</option>
+                    <option value="تكنولوجيا">تكنولوجيا</option>
+                    <option value="تسويق">تسويق</option>
+                    <option value="تعليم">تعليم</option>
+                    <option value="طب">طب</option>
+                    <option value="هندسة">هندسة</option>
+                    <option value="سياحة">سياحة</option>
+                    <option value="محاسبة">محاسبة</option>
+                    <option value="إدارة">إدارة</option>
+                    <option value="خدمة عملاء">خدمة عملاء</option>
+                    <option value="مبيعات">مبيعات</option>
+                </select>
+                <button onclick="searchJobs()" data-i18n="search"><i class="fas fa-search"></i> بحث</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Background Slideshow -->
+    <div class="background-slideshow">
+        <div class="slide" style="background-image: url('صور/do-quang-huy-VNhXMzVmQV0-unsplash.jpg')"></div>
+        <div class="slide" style="background-image: url('صور/i-awale-e1pXz8HE1DQ-unsplash.jpg')"></div>
+        <div class="slide" style="background-image: url('صور/pablo-escobar-_AmKEnDdeWI-unsplash.jpg')"></div>
+        <div class="slide" style="background-image: url('صور/free-photo-of-african-rural-life-with-oxen-and-cart.jpeg')"></div>
+        <div class="slide" style="background-image: url('صور/free-photo-of-man-fishing-by-the-sea-in-al-hoceima-morocco.jpeg')"></div>
+        <div class="slide" style="background-image: url('صور/martin-martz-HZsZRCEQOQE-unsplash.jpg')"></div>
+        <div class="slide" style="background-image: url('صور/pexels-photo-221027.webp')"></div>
+        <div class="slide" style="background-image: url('صور/pexels-photo-5302906.webp')"></div>
+        <div class="slide" style="background-image: url('صور/pexels-photo-5490734.jpeg')"></div>
+        <div class="slide" style="background-image: url('صور/pexels-photo-7457499.jpeg')"></div>
+        <div class="slide" style="background-image: url('صور/pexels-photo-14760650.webp')"></div>
+        <div class="slide" style="background-image: url('صور/pexels-photo-18290480.webp')"></div>
+    </div>
+
+    <!-- Companies Ads Section -->
+    <section class="companies-ads">
+        <div class="container">
+            <h2 data-i18n="companiesAds">إعلانات الشركات</h2>
+            <div class="ads-container" id="adsContainer"></div>
+        </div>
+    </section>
+
+    <!-- Jobs Section -->
+    <section class="jobs-section">
+        <div class="container">
+            <h2 data-i18n="availableJobs">الوظائف المتاحة</h2>
+            <div class="jobs-container" id="jobsContainer"></div>
+            <button id="loadMoreBtn" class="load-more-btn" data-i18n="loadMore">تحميل المزيد</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 data-i18n="title">وظفني</h3>
+                    <p data-i18n="footerAbout">منصة توظيف مصرية تساعدك في العثور على وظيفة أحلامك في مصر.</p>
+                </div>
+                <div class="footer-section">
+                    <h3 data-i18n="quickLinks">روابط سريعة</h3>
+                    <a href="index.html" data-i18n="home">الرئيسية</a>
+                    <a href="about.html" data-i18n="about">حول الموقع</a>
+                    <a href="contact.html" data-i18n="contact">اتصل بنا</a>
+                    <a href="upload-cv.html" data-i18n="uploadCV">رفع السيرة الذاتية</a>
+                </div>
+                <div class="footer-section">
+                    <h3>تواصل معنا</h3>
+                    <p><i class="fas fa-user"></i> Mostafa elwazir</p>
+                    <p><i class="fas fa-envelope"></i> elwazir236@gmail.com</p>
+                    <p><i class="fas fa-phone"></i> +201027034698</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/profile.php?id=100027459679700&mibextid=ZbWKwL" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <p class="footer-bottom" data-i18n="footerBottom"> 2025 وظفني. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <!-- نافذة أسأل ليا -->
+    <div class="ask-for-me-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3>أسأل ليا - المساعد الذكي</h3>
+            <div class="chat-container"></div>
+            <div class="input-group">
+                <input type="text" placeholder="اطرح سؤالك هنا...">
+                <button>إرسال</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
